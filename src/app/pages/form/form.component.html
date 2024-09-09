@@ -1,0 +1,70 @@
+<form [formGroup]="form" (ngSubmit)="submit()" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+    @if ( name?.hasError('required') ) {
+      <mat-error>Name is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email">
+    @if ( email?.hasError('required') ) {
+      <mat-error>Email is required</mat-error>
+    }
+    @if ( email?.hasError('email') ) {
+      <mat-error>Invalid email address</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Gender</mat-label>
+    <mat-select formControlName="gender">
+      <mat-option value="m">Male</mat-option>
+      <mat-option value="f">Female</mat-option>
+    </mat-select>
+    @if ( gender?.hasError('required') ) {
+      <mat-error>Gender is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Age</mat-label>
+    <input matInput type="number" formControlName="age">
+    @if ( age?.hasError('required') ) {
+      <mat-error>Age is required</mat-error>
+    }
+    @if ( age?.hasError('min') ) {
+      <mat-error>Minimum age is 18</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-checkbox formControlName="termsConfirm">
+    I accept the terms and conditions
+  </mat-checkbox>
+
+  <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center">
+    <button mat-button type="button" (click)="undo()" [disabled]="!canUndo()">Undo</button>
+    <button mat-button type="button" (click)="redo()" [disabled]="!canRedo()">Redo</button>
+    <button mat-button type="button" (click)="reset()" [disabled]="form.pristine">Reset form</button>
+  </div>
+
+  <button mat-flat-button type="submit" [disabled]="termsConfirm?.hasError('required')">Submit</button>
+</form>
+
+
+<ng-template #successDialog>
+  <h2 mat-dialog-title>Success</h2>
+  <mat-dialog-content>
+    <p>Your operation was successful! here is you information:</p>
+    <p>Name: {{ form.value.name }}</p>
+    <p>Email: {{ form.value.email }}</p>
+    <p>Gender: {{ form.value.gender }}</p>
+    <p>Age: {{ form.value.age }}</p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close="reset">Reset form</button>
+    <button mat-button routerLink="/" mat-dialog-close>Home</button>
+  </mat-dialog-actions>
+</ng-template>

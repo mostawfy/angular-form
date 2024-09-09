@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  height: 100%;
+  .mat-mdc-form-field {
+    width: 100%;
+  }
+
+  form {
+    height: 100%;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
