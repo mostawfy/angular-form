@@ -1,6 +1,6 @@
 # Angular Form with Angular 18 and Signals Store
 
-This project is an implementation of an Angular form using Angular 18 and the Signals Store feature. The Signals Store is a powerful state management solution that allows for efficient data handling and synchronization within the application.
+This task is an implementation of an Angular reactive form using Angular 18 and the Signals Store feature. The Signals Store is a powerful state management solution that allows for efficient data handling and synchronization within the application.
 
 ## Installation
 
