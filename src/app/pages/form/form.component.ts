@@ -70,13 +70,13 @@ export class FormComponent implements OnInit, OnDestroy {
   // Revert the most recent change made by the user
   undo() {
     this.formStore.undo();
-    this.snackbar.open('Form has been reset to previous state', 'Close');
+    this.snackbar.open('Form has been reset to previous state', 'Close', { duration: 500 });
   }
 
   // Revert the most recent undo operation
   redo() {
     this.formStore.redo();
-    this.snackbar.open('Form has been reset to next state', 'Close');
+    this.snackbar.open('Form has been reset to next state', 'Close', { duration: 500 });
   }
 
   // Reset the form to its initial state
